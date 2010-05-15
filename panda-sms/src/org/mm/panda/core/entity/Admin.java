@@ -19,6 +19,13 @@ import org.mm.panda.core.entity.base.BaseEntity;
 @Entity
 @Table(name = "core_admin")
 public class Admin extends BaseEntity {
+
+	/**
+	 * 在session的保存的key。
+	 */
+	public static final String ADMIN_KEY = "_admin_key";
+	public static final String RIGHTS_KEY = "_rights_key";
+
 	/**
 	 * 系统超级管理员
 	 */
