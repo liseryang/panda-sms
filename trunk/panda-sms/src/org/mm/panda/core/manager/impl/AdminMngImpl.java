@@ -129,9 +129,4 @@ public class AdminMngImpl extends CoreManagerImpl<Admin> implements AdminMng {
 		Admin admin = super.deleteById(id);
 		return admin;
 	}
-
-	public void setUserMng(UserMng userMng) {
-		this.userMng = userMng;
-	}
-
 }
