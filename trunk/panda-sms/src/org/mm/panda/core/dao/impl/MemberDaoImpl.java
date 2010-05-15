@@ -2,9 +2,9 @@ package org.mm.panda.core.dao.impl;
 
 import org.mm.panda.core.CoreDaoImpl;
 import org.mm.panda.core.entity.Member;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-@Service
+@Repository
 public class MemberDaoImpl extends CoreDaoImpl<Member> implements
 		org.mm.panda.core.dao.MemberDao {
 
