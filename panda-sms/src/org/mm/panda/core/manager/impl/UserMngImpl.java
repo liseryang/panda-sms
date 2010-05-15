@@ -36,7 +36,6 @@ public class UserMngImpl extends CoreManagerImpl<User> implements UserMng {
 		return (UserDao) super.getDao();
 	}
 
-
 	@Override
 	public User authenticate(String loginName, String password) {
 		User user = getByLoginName(loginName);
@@ -82,8 +81,21 @@ public class UserMngImpl extends CoreManagerImpl<User> implements UserMng {
 	@Override
 	public User register(User user, boolean isExist)
 			throws UserRegisterException {
-		// TODO Auto-generated method stub
-		return null;
+		Assert.notNull(user,"用户实体不能为空");
+		String loginName = user.getLoginName();
+		Assert.hasText(loginName,"登录名不能为空！");
+		User origUser = getByLoginName(loginName);
+		if (isExist) {
+			if (origUser == null) {
+				throw new UserRegisterException("用户不存在！");
+			}
+			return origUser;
+		} else {
+			if (origUser != null) {
+				throw new UserRegisterException("该用户名已注册！");
+			}
+			return save(user);
+		}
 	}
 
 	@Override
@@ -141,9 +153,9 @@ public class UserMngImpl extends CoreManagerImpl<User> implements UserMng {
 	@Override
 	public User save(User user) {
 		Assert.notNull(user);
-		Assert.hasText(user.getLoginName(),"用户名不能为空！");
-		Assert.hasText(user.getPassword(),"密码不能为空！");
-		Assert.hasText(user.getEmail(),"邮件不能为空！");
+		Assert.hasText(user.getLoginName(), "用户名不能为空！");
+		Assert.hasText(user.getPassword(), "密码不能为空！");
+		Assert.hasText(user.getEmail(), "邮件不能为空！");
 		initUser(user);
 		super.save(user);
 		return user;
@@ -160,12 +172,12 @@ public class UserMngImpl extends CoreManagerImpl<User> implements UserMng {
 		String p = pwdEncoder.encodePassword(user.getPassword());
 		user.setPassword(p);
 		// 即时信息
-		//String ip = contextPvd.getRemoteIp();
+		// String ip = contextPvd.getRemoteIp();
 		Date now = new Timestamp(System.currentTimeMillis());
 		user.setCreateDate(now);
-		//user.setCurrentLoginIp(ip);
+		// user.setCurrentLoginIp(ip);
 		user.setCurrentLoginTime(now);
-		//user.setLastLoginIp(ip);
+		// user.setLastLoginIp(ip);
 		user.setLastLoginTime(now);
 		user.setLoginCount(0L);
 	}
@@ -181,6 +193,7 @@ public class UserMngImpl extends CoreManagerImpl<User> implements UserMng {
 		User user = super.deleteById(id);
 		return user;
 	}
+
 	public void setPwdEncoder(PwdEncoder pwdEncoder) {
 		this.pwdEncoder = pwdEncoder;
 	}

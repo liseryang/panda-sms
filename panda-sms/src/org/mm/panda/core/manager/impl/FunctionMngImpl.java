@@ -10,7 +10,6 @@ import org.mm.panda.common.hibernate3.Updater;
 import org.mm.panda.core.CoreManagerImpl;
 import org.mm.panda.core.dao.FunctionDao;
 import org.mm.panda.core.entity.Function;
-import org.mm.panda.core.manager.AdminMng;
 import org.mm.panda.core.manager.FunctionMng;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
