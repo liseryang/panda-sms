@@ -29,7 +29,7 @@ public class FunctionAct extends CoreBaseAction {
 	private Long[] wids;
 	private int[] prioritys;
 
-	public String list() {
+	public String list() { 
 		if (pid == null) {
 			this.list = functionMng.getRoots();
 		} else {
