@@ -62,4 +62,5 @@
 	</bean>
 	<context:annotation-config />
 	<tx:annotation-driven transaction-manager="transactionManager" />
+	<import resource="file:d://workspace/panda/WebContent/WEB-INF/config/*-context.xml"/>
 </beans>
