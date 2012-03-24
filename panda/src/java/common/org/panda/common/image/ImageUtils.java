@@ -104,7 +104,7 @@ public abstract class ImageUtils {
 	 * 
 	 * 包含左边偏移量，右边偏移量。
 	 * 
-	 * @author liufang
+	 * @author liuyf
 	 * 
 	 */
 	public static class Position {
