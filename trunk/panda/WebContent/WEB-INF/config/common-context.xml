@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	default-lazy-init="true">
+	<!--图片处理 -->
+	<bean id="imageScale" class="org.panda.common.image.ImageScaleImpl"
+		init-method="init">
+		<property name="tryMagick" value="false" />
+	</bean>
+	<!--密码加密器 -->
+	<bean id="pwdEncoder" class="org.panda.common.security.encoder.Md5PwdEncoder" />
+
+	<!--执行时间标签 -->
+	<bean id="uuid" class="org.panda.common.web.freemarker.UUIDDirective" />
+	<bean id="process_time" class="org.panda.common.web.freemarker.ProcessTimeDirective" />
+	<bean id="text_cut" class="org.panda.common.web.freemarker.TextCutDirective" />
+	<bean id="html_cut" class="org.panda.common.web.freemarker.HtmlCutDirective" />
+
+	<bean id="realPathResolver"
+		class="org.panda.common.web.springmvc.ServletContextRealPathResolver" />
+		<!-- 用	QQWry.Dat  ip库 服务 -->
+	<bean id="ipSeeker" class="org.panda.common.ipseek.IPSeekerImpl"
+		init-method="init">
+		<property name="dir" value="/WEB-INF/ipseek" />
+		<property name="filename" value="QQWry.Dat" />
+	</bean>
+</beans>
