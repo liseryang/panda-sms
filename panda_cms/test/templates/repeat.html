@@ -1,0 +1,40 @@
+<#assign x = 1> 
+<#macro root>
+<font size='20' color='red'>大家好！ </font>
+</#macro>
+<#assign test = "Tom&Jerry">  
+
+<#assign test1 = "    tom   "> 
+<#assign test2 = 12.8>   
+
+<#assign test3=['spring','hibernate','strust']>
+   
+一个参数：    
+<@repeat count=4>    
+  Test ${x}    
+  <#assign x = x + 1>    
+</@repeat>    
+   
+二个参数：    
+<@repeat count=3 hr=true>    
+  Test    
+</@repeat>    
+   
+循环变量：    
+<@repeat count=3; cnt>    
+  ${cnt}. Test    
+</@repeat>   
+
+<#--内建函数-->
+${test?html}
+${test?lower_case?html}
+${test?upper_case?html}
+${test1?cap_first}
+${test2?int}
+${test1?trim}
+${test3?size}
+<#list test3 as test>
+${test?cap_first}
+</#list>
+${test3[0]?cap_first}
+<@root/>
