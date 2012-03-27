@@ -18,7 +18,7 @@ import com.mortennobel.imagescaling.ResampleOp;
 /**  
  * @className:ImageUtil.java  
  * @classDescription:Image图像的操作，主要是为了压缩和加水印  
- * @author:xiayingjie  
+ * @author:liuyf 
  * @createTime:2010-11-10  
  */  
 public class ImageUtil {   
@@ -246,7 +246,7 @@ public class ImageUtil {
    }   
 
 public static void main(String[] args) {
-        resize("F://892796.jpg", "F://892796.jpg", 80, 80);   
+        resize("F://892796.jpg", "F://892796.jpg", 1598, 632);   
 
     }   
 }
