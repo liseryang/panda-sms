@@ -40,6 +40,7 @@
 	</bean>
 	<bean id="adminContextInterceptor" class="org.panda.web.AdminContextInterceptor">
 		<property name="auth" value="true" />
+		<property name="adminId" value="1" />
 		<property name="loginUrl" value="/admin/panda/login.do" />
 		<property name="returnUrl" value="/admin/panda/index.do" />
 		<property name="excludeUrls">
@@ -59,8 +60,7 @@
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
-				<prop
-					key="org.springframework.web.bind.MissingServletRequestParameterException">/error/requiredParameter</prop>
+				<prop key="org.springframework.web.bind.MissingServletRequestParameterException">/error/requiredParameter</prop>
 				<prop key="org.springframework.beans.TypeMismatchException">/error/mismatchParameter</prop>
 				<prop key="org.springframework.web.bind.ServletRequestBindingException">/error/bindException</prop>
 				<prop key="org.springframework.dao.DataIntegrityViolationException">/error/integrityViolation</prop>
@@ -68,7 +68,7 @@
 		</property>
 	</bean>
 	<bean id="freemarkerViewResolver"
-		class="com.jeecms.common.web.springmvc.RichFreeMarkerViewResolver"
+		class="org.panda.common.web.springmvc.RichFreeMarkerViewResolver"
 		p:prefix="/sys/" p:suffix=".html" p:contentType="text/html;charset=UTF-8"
 		p:exposeRequestAttributes="false" p:exposeSessionAttributes="false"
 		p:exposeSpringMacroHelpers="true"/>
