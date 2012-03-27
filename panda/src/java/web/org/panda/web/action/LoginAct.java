@@ -24,7 +24,7 @@ public class LoginAct {
 			String value = request.getParameter(name);
 			model.put(name, value);
 		}
-		return "test";
+		return "/sys/login";
 	}
 
 	@RequestMapping(params = "method=logout")
