@@ -8,6 +8,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -62,7 +63,6 @@ public class ImageUtil {
             e.printStackTrace();   
         }   
     }   
-  
     /**  
      * 文字水印  
      *   
@@ -110,7 +110,7 @@ public class ImageUtil {
         }   
     }   
   
-    public static int getLength(String text) {   
+    public static int getLength(String text) {
         int length = 0;   
         for (int i = 0; i < text.length(); i++) {   
             if (new String(text.charAt(i) + "").getBytes().length > 1) {   
@@ -123,6 +123,44 @@ public class ImageUtil {
     }   
   
     // -----------------压缩图片--------------------   
+    
+    
+    /**  
+     * 等比压缩图片，只改变图片容量大小不改变尺寸（默认为jpg格式）  
+     *   
+     * @param fromPath  
+     *            源路径  
+     * @param toPath  
+     *            输出路径  
+     * @param width  
+     *            文件转换后的宽度  
+     * @param height  
+     *            文件转换后的高度  
+     * @return  
+     */  
+    public static boolean resize(String fromPath, String toPath) {   
+    	 // 将图片文件读入到缓存中   
+        BufferedImage inImage;
+        int scaledW=0;
+        int scaledH=0; 
+		try {
+			inImage = ImageIO.read(new FileInputStream(fromPath));
+			
+			 // System.out.println("转前图片高度和宽度：" + inImage.getHeight() + ":"+   
+	        // inImage.getWidth());   
+	         scaledW = inImage.getWidth();   
+	         scaledH = inImage.getHeight(); 
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}   
+
+       
+        return resize(fromPath, toPath, scaledW, scaledH, false, false, "jpg");   
+    }   
   
     /**  
      * 压缩图片（默认为jpg格式）  
@@ -246,7 +284,8 @@ public class ImageUtil {
    }   
 
 public static void main(String[] args) {
-        resize("F://892796.jpg", "F://892796.jpg", 1598, 632);   
-
+        resize("f://T1ux14XaRrXXcS3pI1_040104.jpg", "F://1.jpg");   
+        pressText("f://T1ux14XaRrXXcS3pI1_040104.jpg", "F://1.jpg",null,0,new Color(0),12,100,100,0.5f);
+        pressImage("f://watermark.png","F://1.jpg",0,0,1.0f);
     }   
 }
